@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iglesia Hesed — Amor & Misericordia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav>
+    <a href="#inicio" class="nav-logo">
+      <!-- Reemplaza por tu logotipo: logo-nav.png -->
+      <img src="image/HESED ICPB NO C B.png" alt="Iglesia Hesed" class="nav-logo-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+      <span class="nav-logo-fallback" style="display:none;">HESEDAYM</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#departamentos">Departamentos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+
+    <!-- Cuadro para imagen PNG decorativa (cruz/emblema) -->
+    <div class="hero-emblem">
+      <img src="image/CROSS.png" alt=""
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <!-- Fallback SVG si no hay imagen -->
+      <svg class="emblem-fallback" style="display:none;" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="sunGrad" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#F38B94" stop-opacity="0.9" />
+            <stop offset="60%" stop-color="#CD1015" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#561643" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <g stroke="#CD1015" stroke-width="1" fill="none" opacity="0.4">
+          <circle cx="200" cy="200" r="190" />
+          <circle cx="200" cy="200" r="160" />
+          <circle cx="200" cy="200" r="130" />
+        </g>
+        <g stroke="#6C0E23" stroke-width="1" opacity="0.5">
+          <line x1="200" y1="20" x2="200" y2="380" />
+          <line x1="20" y1="200" x2="380" y2="200" />
+          <line x1="73" y1="73" x2="327" y2="327" />
+          <line x1="327" y1="73" x2="73" y2="327" />
+        </g>
+        <circle cx="200" cy="200" r="100" fill="url(#sunGrad)" />
+        <g stroke="#CD1015" stroke-width="6" stroke-linecap="round">
+          <line x1="200" y1="150" x2="200" y2="260" />
+          <line x1="170" y1="190" x2="230" y2="190" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag">AMOR · MISERICORDIA</div>
+
+      <!-- Cuadro para imagen PNG del logotipo de la iglesia con título -->
+      <div class="hero-logo">
+        <img src="image/H TITLE B.png" alt="Iglesia Hesed - HESEDAYM"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <h1 class="hero-logo-fallback" style="display:none;">Iglesia <em>Hesed</em></h1>
+      </div>
+
+      <p class="hero-subtitle">
+        Una comunidad evangélica donde la fe se vive con <em>amor y misericordia</em>.
+        Te invitamos a encontrarte con Dios y con nuestra familia.
+      </p>
+      <div class="hero-cta">
+        <a href="#horarios" class="btn btn-primary">Ver horarios →</a>
+        <a href="#nosotros" class="btn btn-secondary">Conócenos</a>
+      </div>
+    </div>
+
+    <div class="verse-strip">
+      <span>HESEDAYM</span>
+      <span><em>«Amor y Misericordia»</em></span>
+      <span>SAN BERNARDO · CHILE</span>
+    </div>
+  </section>
+
+  <!-- ============ NOSOTROS ============ -->
+  <section class="about" id="nosotros">
+    <div class="section-header reveal">
+      <span class="section-number">01 · NOSOTROS</span>
+      <h2 class="section-title">Una historia <em>tejida</em> en comunidad.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          <strong>Hesed</strong> es una palabra hebrea que significa <em>amor leal,
+            misericordia y bondad inquebrantable</em>. Ese es el corazón que late en
+          nuestra iglesia y la razón de todo lo que hacemos.
+        </p>
+        <p>
+          Somos un hogar para personas de todas las edades y trasfondos. Creemos en una
+          fe que abraza, que sirve, y que se extiende más allá de las paredes del templo.
+          Nuestro centro es Cristo; nuestra vocación, amar.
+        </p>
+        <p>
+          Te recibimos sin importar de dónde vengas. Aquí hay un asiento, una taza de café,
+          y una historia esperándote.
+        </p>
+      </div>
+
+      <div class="about-stats reveal">
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Puertas Abiertas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Reuniones Semanales</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Liderazgos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Familia en Cristo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HORARIOS ============ -->
+  <section class="schedule" id="horarios">
+    <div class="section-header reveal">
+      <span class="section-number">02 · HORARIOS</span>
+      <h2 class="section-title">Cuándo nos <em>encontramos</em>.</h2>
+    </div>
+
+    <div class="schedule-grid">
+      <div class="schedule-card reveal">
+        <div class="schedule-day">MARTES</div>
+        <div class="schedule-time">20:00</div>
+        <div class="schedule-name">Estudio Bíblico</div>
+        <div class="schedule-desc"><em>Transmisión en vivo.</em> Únete desde donde estés.</div>
+        <a href="https://www.facebook.com/hesedaym/live_videos" target="_blank" rel="noopener"
+          class="schedule-btn schedule-btn-fb">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+          Unirse por Facebook
+        </a>
+      </div>
+
+      <div class="schedule-card reveal">
+        <div class="schedule-day">MIÉRCOLES</div>
+        <div class="schedule-time">22:00</div>
+        <div class="schedule-name">Oración</div>
+        <div class="schedule-desc"><em>Reunión por Google Meet.</em> Un tiempo íntimo de oración juntos.</div>
+        <div class="schedule-tag">LINK POR WHATSAPP</div>
+      </div>
+
+      <div class="schedule-card reveal">
+        <div class="schedule-day">VIERNES</div>
+        <div class="schedule-time">20:00</div>
+        <div class="schedule-name">Estudio Bíblico</div>
+        <div class="schedule-desc"><em>Encuentro presencial</em> en el templo. Te esperamos.</div>
+        <div class="schedule-tag">PRESENCIAL</div>
+      </div>
+
+      <div class="schedule-card reveal">
+        <div class="schedule-day">DOMINGO</div>
+        <div class="schedule-time">11:00</div>
+        <div class="schedule-name">Culto General</div>
+        <div class="schedule-desc"><em>Adoración, predicación y comunión.</em> Para toda la familia.</div>
+        <div class="schedule-tag">PRESENCIAL</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEPARTAMENTOS ============ -->
+  <section class="departments" id="departamentos">
+    <div class="section-header reveal">
+      <span class="section-number">03 · DEPARTAMENTOS</span>
+      <h2 class="section-title">Quiénes <em>servimos</em>.</h2>
+    </div>
+
+    <!-- Fila 1: Pastores (centrados) -->
+    <div class="dept-row">
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="pastor.jpg" alt="Pastor"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">PASTOR</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">PASTOR</div>
+          <div class="dept-name">Raúl Sánchez</div>
+          <div class="dept-extra"><em>Líder de Varones</em></div>
+        </div>
+      </div>
+
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="pastora.jpg" alt="Pastora"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">PASTORA</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">PASTORA</div>
+          <div class="dept-name">Giovana Oñate</div>
+          <div class="dept-extra"><em>Secretaría · Líder de Dorcas</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 2: Diáconos (centrados) -->
+    <div class="dept-row">
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="diacono-tesorero.jpg" alt="Diácono Tesorero"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">DIÁCONO</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">DIÁCONO</div>
+          <div class="dept-name">Pedro Curín</div>
+          <div class="dept-extra"><em>Tesorero</em></div>
+        </div>
+      </div>
+
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="diacono-jovenes.jpg" alt="Diácono Líder de Jóvenes"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">DIÁCONO</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">DIÁCONO</div>
+          <div class="dept-name">Matías Riquelme</div>
+          <div class="dept-extra"><em>Líder de Jóvenes</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 3: Alabanza y Multimedia (centrados) -->
+    <div class="dept-row">
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="alabanza.jpg" alt="Líder de Alabanza"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">ALABANZA</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">ALABANZA</div>
+          <div class="dept-name">Daniel Sánchez</div>
+          <div class="dept-extra"><em>Líder de Alabanza</em></div>
+        </div>
+      </div>
+
+      <div class="dept-card reveal">
+        <div class="dept-photo">
+          <img src="multimedia.jpg" alt="Encargada de Multimedia"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="dept-photo-fallback" style="display:none;">MULTIMEDIA</div>
+        </div>
+        <div class="dept-info">
+          <div class="dept-role">MULTIMEDIA</div>
+          <div class="dept-name">Johana Neira</div>
+          <div class="dept-extra"><em>Encargada de Multimedia</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="gallery" id="galeria">
+    <div class="section-header reveal">
+      <span class="section-number">04 · GALERÍA</span>
+      <h2 class="section-title">Momentos que <em>contamos</em>.</h2>
+    </div>
+
+    <div class="gallery-collage">
+      <div class="gallery-item reveal">
+        <img src="galeria-1.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">01</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-2.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">02</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-3.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">03</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-4.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">04</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-5.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">05</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-6.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">06</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-7.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">07</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="galeria-8.jpg" alt="" onerror="this.style.display='none'">
+        <div class="placeholder">08</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto">
+    <div class="section-header reveal">
+      <span class="section-number">05 · CONTACTO</span>
+      <h2 class="section-title">Dónde <em>encontrarnos</em>.</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-block">
+          <div class="contact-label">DIRECCIÓN</div>
+          <div class="contact-value">Intendenta Georgina Otárola 14811<br><em>San Bernardo, Chile</em></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">CÓMO LLEGAR</div>
+          <div class="contact-value">
+            <a href="https://www.google.com/maps/search/?api=1&query=Intendenta+Georgina+Ot%C3%A1rola+14811+San+Bernardo"
+              target="_blank" rel="noopener">
+              Abrir en Google Maps →
+            </a>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">HORARIOS DE ATENCIÓN</div>
+          <div class="contact-value"><em>Martes, Viernes & Domingo</em><br>Según calendario de reuniones</div>
+        </div>
+      </div>
+
+      <div class="map-frame reveal">
+        <!-- Google Maps con marcador en la dirección exacta -->
+        <iframe
+          src="https://www.google.com/maps?q=Intendenta+Georgina+Ot%C3%A1rola+14811,+San+Bernardo,+Chile&hl=es&z=17&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ubicación Iglesia Hesed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REDES SOCIALES ============ -->
+  <section class="social">
+    <div class="social-content">
+      <h2>Síguenos en <em>nuestras</em> redes.</h2>
+      <p>Compartimos prédicas, devocionales y momentos de la comunidad cada semana.</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
+          aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
+          aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.youtube.com/@hesedaym" target="_blank" rel="noopener" class="social-icon"
+          aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+          <span>YouTube</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand-block">
+        <!-- Cuadro para tu logotipo PNG en el footer -->
+        <div class="footer-logo-frame">
+          <img src="image/H TITLE W.png" alt="Iglesia Hesed" class="footer-logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="footer-brand-fallback" style="display:none;">Iglesia <em>Hesed</em></div>
+        </div>
+        <p class="footer-tagline">
+          <em>Amor & Misericordia.</em> Una comunidad evangélica con las puertas
+          abiertas y el corazón cerca.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>NAVEGAR</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#horarios">Horarios</a></li>
+          <li><a href="#departamentos">Departamentos</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>VISÍTANOS</h4>
+        <ul>
+          <li><a href="#contacto">Intendenta Georgina Otárola 14811</a></li>
+          <li><a href="#contacto">San Bernardo, Chile</a></li>
+          <li><a href="#horarios">Domingos 11:00 hrs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 IGLESIA HESED · HESEDAYM</span>
+      <span><em>Amor & Misericordia</em></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

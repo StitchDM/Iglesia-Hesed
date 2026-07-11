@@ -1648,11 +1648,12 @@ footer {
   }
 
   .scroll-top.levantado {
-    bottom: 2rem;
+    bottom: 2rem !important;
   }
 
+  .spotify-float,
   .spotify-float.bajado {
-    bottom: 2rem;
+    bottom: 2rem !important;
   }
 
   section {

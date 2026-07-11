@@ -1597,6 +1597,12 @@ footer {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  transform: translateZ(0);
+}
+
+.spotify-panel iframe {
+  display: block;
 }
 
 .spotify-panel {

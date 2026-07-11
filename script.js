@@ -60,15 +60,16 @@ if (studiesIframe && studiesPlayer) {
   const MIN_IMGS = 8;
   const MAX_IMGS = 20;
 
-  fetch('galeria/')
-    .then(r => r.text())
-    .then(html => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      let paths = [...doc.querySelectorAll('a[href]')]
-        .map(a => a.getAttribute('href'))
-        .filter(h => /\.(jpg|jpeg|png|webp|gif)$/i.test(h));
+  (function() {
+    let paths = [
+      'galeria/galeria-1.jpg','galeria/galeria-2.jpg','galeria/galeria-3.jpg',
+      'galeria/galeria-4.jpg','galeria/galeria-5.jpg','galeria/galeria-6.jpg',
+      'galeria/galeria-7.jpg','galeria/galeria-8.jpg','galeria/galeria-9.jpg',
+      'galeria/galeria-10.jpg','galeria/galeria-11.jpg','galeria/galeria-12.jpg',
+      'galeria/galeria-13.jpg',
+    ];
 
-      if (!paths.length) return;
+    if (!paths.length) return;
 
       // Mezcla aleatoria (Fisher-Yates)
       for (let i = paths.length - 1; i > 0; i--) {
@@ -129,7 +130,7 @@ if (studiesIframe && studiesPlayer) {
         collage.querySelectorAll('.gallery-item').forEach(el => observer.observe(el));
       });
     })
-    .catch(() => {});
+  })();
 })();
 
 // === Badge EN VIVO ===

@@ -1648,7 +1648,7 @@ footer {
   }
 
   .scroll-top.levantado {
-    bottom: 2rem !important;
+    bottom: 10rem;
   }
 
   .spotify-float,

@@ -30,24 +30,47 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
-// === Video de estudios: autoplay al llegar a la sección ===
-// Para actualizar: reemplaza LATEST_VIDEO_ID con el ID del último estudio subido.
-const LATEST_VIDEO_ID = 'B6HqRzcWHSA';
+// === Video de estudios: toma automáticamente el último video de la playlist ===
+const PLAYLIST_ID = 'PLyEwNc7bCIYXDODfXdSF9Zb6x0roC3KQY';
+const FALLBACK_VIDEO_ID = 'B6HqRzcWHSA';
 
 const studiesIframe = document.getElementById('studiesIframe');
 const studiesPlayer = document.getElementById('studiesPlayer');
 
 if (studiesIframe && studiesPlayer) {
+  let latestVideoId = FALLBACK_VIDEO_ID;
+  let playerReady = false;
+
+  function loadVideo() {
+    if (!studiesIframe.src) {
+      studiesIframe.src = `https://www.youtube.com/embed/${latestVideoId}?autoplay=1&mute=1&rel=0&cc_load_policy=0&cc_lang_pref=none`;
+    }
+  }
+
   const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !studiesIframe.src) {
-        studiesIframe.src = `https://www.youtube.com/embed/${LATEST_VIDEO_ID}?autoplay=1&mute=1&rel=0&cc_load_policy=0&cc_lang_pref=none`;
+      if (entry.isIntersecting) {
+        if (playerReady) loadVideo();
         videoObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.4 });
 
   videoObserver.observe(studiesPlayer);
+
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.items && data.items.length) {
+        const url = new URL(data.items[0].link);
+        latestVideoId = url.searchParams.get('v') || FALLBACK_VIDEO_ID;
+      }
+    })
+    .catch(() => {})
+    .finally(() => {
+      playerReady = true;
+      if (!studiesIframe.src) loadVideo();
+    });
 }
 
 // === Galería justified (sin recorte, rectángulo perfecto) ===

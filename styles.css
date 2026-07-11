@@ -1647,9 +1647,12 @@ footer {
     display: block;
   }
 
-  .scroll-top,
-  .spotify-float {
-    display: none !important;
+  .scroll-top.levantado {
+    bottom: 2rem;
+  }
+
+  .spotify-float.bajado {
+    bottom: 2rem;
   }
 
   section {

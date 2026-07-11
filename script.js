@@ -129,7 +129,6 @@ if (studiesIframe && studiesPlayer) {
 
         collage.querySelectorAll('.gallery-item').forEach(el => observer.observe(el));
       });
-    })
   })();
 })();
 

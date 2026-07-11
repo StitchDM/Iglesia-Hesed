@@ -62,7 +62,9 @@ if (studiesIframe && studiesPlayer) {
     .then(r => r.json())
     .then(data => {
       if (data.items && data.items.length) {
-        const url = new URL(data.items[0].link);
+        const filtered = data.items.filter(v => v.title && v.title.toUpperCase().includes('EVANGELIOS SINOPTICOS'));
+        const item = filtered.length ? filtered[0] : data.items[0];
+        const url = new URL(item.link);
         latestVideoId = url.searchParams.get('v') || FALLBACK_VIDEO_ID;
       }
     })

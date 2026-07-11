@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iglesia Hesed — Amor & Misericordia</title>
+  <title>Iglesia Hesed</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,12 +18,18 @@
 
   <!-- ============ NAVIGATION ============ -->
   <nav>
-    <a href="#inicio" class="nav-logo">
-      <!-- Reemplaza por tu logotipo: logo-nav.png -->
-      <img src="image/HESED ICPB NO C B.png" alt="Iglesia Hesed" class="nav-logo-img"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-      <span class="nav-logo-fallback" style="display:none;">HESEDAYM</span>
-    </a>
+    <div class="nav-left">
+      <a href="#inicio" class="nav-logo">
+        <img src="image/HESED ICPB NO C B.png" alt="Iglesia Hesed" class="nav-logo-img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+        <span class="nav-logo-fallback" style="display:none;">HESEDAYM</span>
+      </a>
+      <a class="nav-live" id="navLive" href="https://www.facebook.com/hesedaym/live_videos" target="_blank"
+        rel="noopener">
+        <span class="nav-live-dot"></span>EN VIVO
+      </a>
+    </div>
+
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
@@ -70,7 +77,6 @@
     </div>
 
     <div class="hero-content">
-      <div class="hero-tag">AMOR · MISERICORDIA</div>
 
       <!-- Cuadro para imagen PNG del logotipo de la iglesia con título -->
       <div class="hero-logo">
@@ -115,10 +121,21 @@
           fe que abraza, que sirve, y que se extiende más allá de las paredes del templo.
           Nuestro centro es Cristo; nuestra vocación, amar.
         </p>
-        <p>
-          Te recibimos sin importar de dónde vengas. Aquí hay un asiento, una taza de café,
-          y una historia esperándote.
-        </p>
+
+        <div class="about-assoc">
+          <span class="about-assoc-label">NUESTRA COBERTURA</span>
+          <a href="https://www.icpvalpo.org/" target="_blank" rel="noopener" class="about-assoc-link">
+            Iglesia Cristiana Pentecostal de Valparaíso
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+          <p class="about-assoc-desc">Fundada en abril de 1930. Con personalidad jurídica de derecho público N°02198 (23
+            de septiembre de 2010).</p>
+        </div>
       </div>
 
       <div class="about-stats reveal">
@@ -167,7 +184,7 @@
 
       <div class="schedule-card reveal">
         <div class="schedule-day">MIÉRCOLES</div>
-        <div class="schedule-time">22:00</div>
+        <div class="schedule-time">21:00</div>
         <div class="schedule-name">Oración</div>
         <div class="schedule-desc"><em>Reunión por Google Meet.</em> Un tiempo íntimo de oración juntos.</div>
         <div class="schedule-tag">LINK POR WHATSAPP</div>
@@ -177,8 +194,16 @@
         <div class="schedule-day">VIERNES</div>
         <div class="schedule-time">20:00</div>
         <div class="schedule-name">Estudio Bíblico</div>
-        <div class="schedule-desc"><em>Encuentro presencial</em> en el templo. Te esperamos.</div>
-        <div class="schedule-tag">PRESENCIAL</div>
+        <div class="schedule-desc"><em>Presencial y transmisión en vivo.</em> Únete desde el templo o desde donde estés.
+        </div>
+        <a href="https://www.facebook.com/hesedaym/live_videos" target="_blank" rel="noopener"
+          class="schedule-btn schedule-btn-fb">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+          Unirse por Facebook
+        </a>
       </div>
 
       <div class="schedule-card reveal">
@@ -193,32 +218,22 @@
 
   <!-- ============ DEPARTAMENTOS ============ -->
   <section class="departments" id="departamentos">
-    <div class="section-header reveal">
+    <div class="section-header reveal" style="text-align:center; max-width:100%;">
       <span class="section-number">03 · DEPARTAMENTOS</span>
       <h2 class="section-title">Quiénes <em>servimos</em>.</h2>
     </div>
 
-    <!-- Fila 1: Pastores (centrados) -->
-    <div class="dept-row">
+    <div class="dept-grid dept-grid-pastores">
       <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="pastor.jpg" alt="Pastor"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">PASTOR</div>
-        </div>
+        <div class="dept-avatar">RS</div>
         <div class="dept-info">
           <div class="dept-role">PASTOR</div>
           <div class="dept-name">Raúl Sánchez</div>
           <div class="dept-extra"><em>Líder de Varones</em></div>
         </div>
       </div>
-
       <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="pastora.jpg" alt="Pastora"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">PASTORA</div>
-        </div>
+        <div class="dept-avatar">GO</div>
         <div class="dept-info">
           <div class="dept-role">PASTORA</div>
           <div class="dept-name">Giovana Oñate</div>
@@ -227,133 +242,107 @@
       </div>
     </div>
 
-    <!-- Fila 2: Diáconos (centrados) -->
-    <div class="dept-row">
+    <div class="dept-grid dept-grid-staff">
       <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="diacono-tesorero.jpg" alt="Diácono Tesorero"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">DIÁCONO</div>
-        </div>
-        <div class="dept-info">
-          <div class="dept-role">DIÁCONO</div>
-          <div class="dept-name">Pedro Curín</div>
-          <div class="dept-extra"><em>Tesorero</em></div>
-        </div>
-      </div>
-
-      <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="diacono-jovenes.jpg" alt="Diácono Líder de Jóvenes"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">DIÁCONO</div>
-        </div>
-        <div class="dept-info">
-          <div class="dept-role">DIÁCONO</div>
-          <div class="dept-name">Matías Riquelme</div>
-          <div class="dept-extra"><em>Líder de Jóvenes</em></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fila 3: Alabanza y Multimedia (centrados) -->
-    <div class="dept-row">
-      <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="alabanza.jpg" alt="Líder de Alabanza"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">ALABANZA</div>
-        </div>
-        <div class="dept-info">
-          <div class="dept-role">ALABANZA</div>
-          <div class="dept-name">Daniel Sánchez</div>
-          <div class="dept-extra"><em>Líder de Alabanza</em></div>
-        </div>
-      </div>
-
-      <div class="dept-card reveal">
-        <div class="dept-photo">
-          <img src="multimedia.jpg" alt="Encargada de Multimedia"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="dept-photo-fallback" style="display:none;">MULTIMEDIA</div>
-        </div>
+        <div class="dept-avatar">JN</div>
         <div class="dept-info">
           <div class="dept-role">MULTIMEDIA</div>
           <div class="dept-name">Johana Neira</div>
           <div class="dept-extra"><em>Encargada de Multimedia</em></div>
         </div>
       </div>
+      <div class="dept-card reveal">
+        <div class="dept-avatar">PC</div>
+        <div class="dept-info">
+          <div class="dept-role">DIÁCONO</div>
+          <div class="dept-name">Pedro Curín</div>
+          <div class="dept-extra"><em>Tesorero</em></div>
+        </div>
+      </div>
+      <div class="dept-card reveal">
+        <div class="dept-avatar">MR</div>
+        <div class="dept-info">
+          <div class="dept-role">DIÁCONO</div>
+          <div class="dept-name">Matías Riquelme</div>
+          <div class="dept-extra"><em>Líder de Jóvenes</em></div>
+        </div>
+      </div>
+      <div class="dept-card reveal">
+        <div class="dept-avatar">DS</div>
+        <div class="dept-info">
+          <div class="dept-role">ALABANZA</div>
+          <div class="dept-name">Daniel Sánchez</div>
+          <div class="dept-extra"><em>Líder de Alabanza</em></div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ============ ESTUDIOS BÍBLICOS ============ -->
+  <section class="studies" id="estudios">
+    <div class="studies-layout">
+      <div class="studies-text reveal">
+        <div class="section-header" style="margin-bottom:2rem;">
+          <span class="section-number">04 · ESTUDIOS BÍBLICOS</span>
+          <h2 class="section-title">Aprende con <em>nosotros</em>.</h2>
+        </div>
+        <p>Cada martes y viernes compartimos la Palabra de Dios. Actualmente estudiamos los <em>Evangelios
+            Sinópticos</em>.</p>
+
+        <div class="studies-gospels">
+          <div class="gospel-card">
+            <span class="gospel-abbr">Mt</span>
+            <span class="gospel-name">Mateo</span>
+          </div>
+          <div class="gospel-card">
+            <span class="gospel-abbr">Mc</span>
+            <span class="gospel-name">Marcos</span>
+          </div>
+          <div class="gospel-card">
+            <span class="gospel-abbr">Lc</span>
+            <span class="gospel-name">Lucas</span>
+          </div>
+        </div>
+
+        <div class="studies-btns">
+          <a href="https://www.youtube.com/playlist?list=PLyEwNc7bCIYXDODfXdSF9Zb6x0roC3KQY" target="_blank"
+            rel="noopener" class="btn btn-primary">Ver todos los estudios →</a>
+          <a class="studies-live-badge" id="studiesLiveBadge" href="https://www.facebook.com/hesedaym/live_videos"
+            target="_blank" rel="noopener">
+            <span class="nav-live-dot"></span>EN VIVO EN FACEBOOK
+          </a>
+        </div>
+      </div>
+
+      <div class="studies-player reveal" id="studiesPlayer">
+        <iframe id="studiesIframe" title="Estudios Bíblicos — Iglesia Hesed" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ============ GALERÍA ============ -->
   <section class="gallery" id="galeria">
-    <div class="section-header reveal">
-      <span class="section-number">04 · GALERÍA</span>
+    <div class="section-header reveal" style="text-align:center; max-width:100%;">
+      <span class="section-number">05 · GALERÍA</span>
       <h2 class="section-title">Momentos que <em>contamos</em>.</h2>
     </div>
 
-    <div class="gallery-collage">
-      <div class="gallery-item reveal">
-        <img src="galeria-1.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">01</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-2.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">02</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-3.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">03</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-4.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">04</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-5.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">05</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-6.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">06</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-7.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">07</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-8.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">08</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-9.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">09</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-10.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">10</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-11.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">11</div>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="galeria-12.jpg" alt="" onerror="this.style.display='none'">
-        <div class="placeholder">12</div>
-      </div>
+    <div class="gallery-collage" id="galleryCollage">
     </div>
   </section>
 
   <!-- ============ CONTACTO ============ -->
   <section class="contact" id="contacto">
-    <div class="section-header reveal">
-      <span class="section-number">05 · CONTACTO</span>
-      <h2 class="section-title">Dónde <em>encontrarnos</em>.</h2>
-    </div>
-
     <div class="contact-grid">
       <div class="contact-info reveal">
+        <div class="section-header" style="margin-bottom:2rem;">
+          <span class="section-number">06 · CONTACTO</span>
+          <h2 class="section-title">Dónde <em>encontrarnos</em>.</h2>
+        </div>
         <div class="contact-block">
           <div class="contact-label">DIRECCIÓN</div>
           <div class="contact-value">Intendenta Georgina Otárola 14811<br><em>San Bernardo, Chile</em></div>
@@ -365,6 +354,12 @@
               target="_blank" rel="noopener">
               Abrir en Google Maps →
             </a>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-label">CORREO</div>
+          <div class="contact-value">
+            <a href="mailto:iglesiahesedaym@gmail.com">iglesiahesedaym@gmail.com</a>
           </div>
         </div>
         <div class="contact-block">
@@ -383,79 +378,113 @@
     </div>
   </section>
 
-  <!-- ============ REDES SOCIALES ============ -->
-  <section class="social">
-    <div class="social-content">
-      <h2>Síguenos en <em>nuestras</em> redes.</h2>
-      <p>Compartimos prédicas, devocionales y momentos de la comunidad cada semana.</p>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
-          aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-          </svg>
-          <span>Instagram</span>
-        </a>
-        <a href="https://www.facebook.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
-          aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-          </svg>
-          <span>Facebook</span>
-        </a>
-        <a href="https://www.youtube.com/@hesedaym" target="_blank" rel="noopener" class="social-icon"
-          aria-label="YouTube">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-          </svg>
-          <span>YouTube</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- ============ REDES + FOOTER (altura = 100vh) ============ -->
+  <div class="closing-block">
 
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand-block">
-        <!-- Cuadro para tu logotipo PNG en el footer -->
-        <div class="footer-logo-frame">
-          <img src="image/H TITLE W.png" alt="Iglesia Hesed" class="footer-logo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="footer-brand-fallback" style="display:none;">Iglesia <em>Hesed</em></div>
+    <!-- ============ REDES SOCIALES ============ -->
+    <section class="social">
+      <div class="social-content">
+        <h2>Síguenos en <em>nuestras</em> redes.</h2>
+        <p>Compartimos prédicas, devocionales y momentos de la comunidad cada semana.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
+            aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/hesedaym" target="_blank" rel="noopener" class="social-icon"
+            aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.youtube.com/@hesedaym" target="_blank" rel="noopener" class="social-icon"
+            aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+            <span>YouTube</span>
+          </a>
+          <a href="https://cl.pinterest.com/hesedaym/" target="_blank" rel="noopener" class="social-icon"
+            aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+            </svg>
+            <span>Pinterest</span>
+          </a>
         </div>
-        <p class="footer-tagline">
-          <em>Amor & Misericordia.</em> Una comunidad evangélica con las puertas
-          abiertas y el corazón cerca.
-        </p>
       </div>
-      <div class="footer-col">
-        <h4>NAVEGAR</h4>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#horarios">Horarios</a></li>
-          <li><a href="#departamentos">Departamentos</a></li>
-          <li><a href="#galeria">Galería</a></li>
-        </ul>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <!-- Cuadro para tu logotipo PNG en el footer -->
+          <div class="footer-logo-frame">
+            <img src="image/H TITLE W.png" alt="Iglesia Hesed" class="footer-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="footer-brand-fallback" style="display:none;">Iglesia <em>Hesed</em></div>
+          </div>
+          <p class="footer-tagline">
+            <em>Amor & Misericordia.</em> Una comunidad evangélica con las puertas
+            abiertas y el corazón cerca.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>ASOCIACIÓN</h4>
+          <ul>
+            <li><a href="https://www.icpvalpo.org/" target="_blank" rel="noopener">ICPV — Iglesia
+                Cristiana<br>Pentecostal de Valparaíso</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>VISÍTANOS</h4>
+          <ul>
+            <li><a href="#contacto">Intendenta Georgina Otárola 14811</a></li>
+            <li><a href="#contacto">San Bernardo, Chile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>CORREO</h4>
+          <ul>
+            <li><a href="mailto:iglesiahesedaym@gmail.com">iglesiahesedaym@gmail.com</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>VISÍTANOS</h4>
-        <ul>
-          <li><a href="#contacto">Intendenta Georgina Otárola 14811</a></li>
-          <li><a href="#contacto">San Bernardo, Chile</a></li>
-          <li><a href="#horarios">Domingos 11:00 hrs</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <span>© 2026 IGLESIA HESED · HESEDAYM</span>
+        <span><em>Amor & Misericordia</em></span>
       </div>
+    </footer>
+
+  </div><!-- /.closing-block -->
+
+  <!-- Spotify flotante -->
+  <div class="spotify-float" id="spotifyFloat">
+    <button class="spotify-toggle" id="spotifyToggle" aria-label="Reproducir música">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+      </svg>
+    </button>
+    <div class="spotify-panel cerrado" id="spotifyPanel">
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/5CjWwjrNo32eWUj9VROAni?utm_source=generator&si=8affb60f3ae44a22&autoplay=1"
+        width="100%" height="352" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 IGLESIA HESED · HESEDAYM</span>
-      <span><em>Amor & Misericordia</em></span>
-    </div>
-  </footer>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+    <img src="image/Vector.svg" alt="" width="28" height="28">
+  </button>
 
   <script src="script.js"></script>
 </body>

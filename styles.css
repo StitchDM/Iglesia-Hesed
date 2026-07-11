@@ -37,6 +37,28 @@
   box-sizing: border-box;
 }
 
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 2px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(205, 16, 21, 0.35);
+  border-radius: 100px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 14, 35, 0.6);
+  background-clip: padding-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -81,7 +103,14 @@ nav {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(108, 14, 35, 0.08);
+  box-shadow: 0 4px 24px rgba(108, 14, 35, 0.1);
   transition: all 0.4s ease;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-logo {
@@ -106,6 +135,35 @@ nav {
   color: var(--burgundy);
 }
 
+.nav-live {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--red);
+  border-radius: 100px;
+  background: rgba(205, 16, 21, 0.06);
+  text-transform: uppercase;
+}
+
+.nav-live.active {
+  display: inline-flex;
+}
+
+.nav-live-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: blink 1.2s infinite;
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
   gap: 2.5rem;
@@ -121,6 +179,7 @@ nav {
   text-transform: uppercase;
   position: relative;
   transition: color 0.3s;
+  padding: 0.6rem 0.8rem;
 }
 
 .nav-links a::after {
@@ -158,6 +217,7 @@ nav {
   display: flex;
   align-items: center;
   padding: 8rem 3rem 5rem;
+  user-select: none;
   overflow: hidden;
   background: linear-gradient(90deg, var(--white) 0%, var(--pink) 150%);
 }
@@ -201,11 +261,11 @@ nav {
 /* Cuadro para imagen decorativa (cruz/emblema) */
 .hero-emblem {
   position: absolute;
-  right: 8%;
+  right: 3%;
   top: 50%;
-  transform: translateY(-50%);
-  width: 380px;
-  height: 380px;
+  transform: translateY(-35%);
+  width: 560px;
+  height: 560px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -213,10 +273,8 @@ nav {
 }
 
 .hero-emblem img {
-  max-width: 150%;
-  max-height: 150%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -272,6 +330,16 @@ nav {
 /* Cuadro para imagen del logotipo principal */
 .hero-logo {
   margin-bottom: 2rem;
+}
+
+.hero-location {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.6rem;
 }
 
 .hero-logo img {
@@ -447,11 +515,37 @@ section {
   color: var(--pink);
 }
 
+.about .section-header {
+  max-width: 100%;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: stretch;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(243, 139, 148, 0.12), rgba(243, 255, 185, 0.05));
+  border: 1px solid rgba(243, 139, 148, 0.25);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.about-stats .stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text {
+  align-self: start;
 }
 
 .about-text p {
@@ -490,11 +584,11 @@ section {
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: 2.6rem;
   font-weight: 400;
   color: var(--lime);
   line-height: 1;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .stat-label {
@@ -504,6 +598,57 @@ section {
   font-size: 0.85rem;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* Bloque asociación en Nosotros */
+.about-assoc {
+  margin-bottom: 0;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(243, 139, 148, 0.25);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(243, 139, 148, 0.08), rgba(243, 255, 185, 0.04));
+}
+
+.about-assoc-label {
+  display: block;
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--pink);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.about-assoc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 0.5rem;
+}
+
+.about-assoc-link:hover {
+  color: var(--pink);
+}
+
+.about-assoc-link svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+.about-assoc .about-assoc-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ============ HORARIOS ============ */
@@ -653,27 +798,35 @@ section {
   position: relative;
 }
 
-/* Cada fila es un contenedor centrado */
-.dept-row {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
+.dept-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.dept-row:last-child {
+.dept-grid:last-child {
   margin-bottom: 0;
 }
 
+.dept-grid-pastores {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dept-grid-staff {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .dept-card {
-  flex: 0 1 320px;
-  max-width: 320px;
   background: var(--white);
   border-radius: 20px;
   overflow: hidden;
   border: 1.5px solid rgba(108, 14, 35, 0.08);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem 1.8rem;
+  text-align: center;
 }
 
 .dept-card:hover {
@@ -682,43 +835,24 @@ section {
   border-color: rgba(205, 16, 21, 0.2);
 }
 
-.dept-photo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  overflow: hidden;
-  background: var(--purple-deep);
-}
-
-.dept-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.4s ease, transform 0.6s ease;
-}
-
-.dept-card:hover .dept-photo img {
-  filter: grayscale(80%) contrast(1.1);
-  transform: scale(1.04);
-}
-
-.dept-photo-fallback {
-  position: absolute;
-  inset: 0;
+.dept-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--burgundy), var(--purple-deep));
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--purple-deep), var(--burgundy));
-  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font);
   font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.3em;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
+  flex-shrink: 0;
 }
 
 .dept-info {
-  padding: 1.8rem 1.5rem;
   text-align: center;
 }
 
@@ -728,21 +862,21 @@ section {
   font-size: 0.7rem;
   letter-spacing: 0.3em;
   color: var(--red);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
 
 .dept-name {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: var(--ink);
 }
 
 .dept-extra {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--ink-soft);
   font-weight: 400;
 }
@@ -751,6 +885,220 @@ section {
   font-style: italic;
   font-weight: 300;
   color: var(--burgundy);
+}
+
+/* ============ ESTUDIOS BÍBLICOS ============ */
+.studies {
+  background: var(--white);
+}
+
+.studies-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.studies-text p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
+.studies-text p em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--burgundy);
+}
+
+/* Evangelios Sinópticos */
+.studies-gospels {
+  display: flex;
+  gap: 1rem;
+  margin: 1.8rem 0;
+}
+
+.gospel-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.4rem 0.8rem;
+  border-radius: 16px;
+  border: 1.5px solid rgba(108, 14, 35, 0.15);
+  background: linear-gradient(135deg, rgba(205,16,21,0.04), rgba(86,22,67,0.06));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gospel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(108, 14, 35, 0.12);
+}
+
+.gospel-abbr {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--red);
+  line-height: 1;
+}
+
+.gospel-name {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Fila de botones estudios */
+.studies-btns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.studies-btns .btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Badge EN VIVO en sección estudios */
+.studies-live-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  color: rgba(108, 14, 35, 0.35);
+  padding: 1rem 1.5rem;
+  border: 1.5px solid rgba(108, 14, 35, 0.2);
+  border-radius: 100px;
+  background: transparent;
+  text-transform: uppercase;
+  text-decoration: none;
+  flex: 1;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.studies-live-badge .nav-live-dot {
+  background: rgba(108, 14, 35, 0.25);
+  animation: none;
+}
+
+.studies-live-badge.active {
+  color: var(--red);
+  border-color: var(--red);
+  background: rgba(205, 16, 21, 0.06);
+  pointer-events: auto;
+}
+
+.studies-live-badge.active .nav-live-dot {
+  background: var(--red);
+  animation: blink 1.2s infinite;
+}
+
+.studies-live-badge.active:hover {
+  background: rgba(205, 16, 21, 0.12);
+}
+
+/* Miniaturas de últimos estudios */
+.studies-thumbs {
+  margin-bottom: 2rem;
+}
+
+.studies-thumb-label {
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--red);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.studies-thumb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.studies-thumb-grid a {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.studies-thumb-grid a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.studies-thumb-grid a:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+.studies-thumb-grid a::after {
+  content: '▶';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.studies-thumb-grid a:hover::after {
+  opacity: 1;
+}
+
+.studies-thumb-skeleton {
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(108,14,35,0.06) 25%, rgba(108,14,35,0.12) 50%, rgba(108,14,35,0.06) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.studies-player {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(108, 14, 35, 0.1);
+  box-shadow: 0 20px 50px rgba(108, 14, 35, 0.1);
+  align-self: stretch;
+}
+
+.studies-player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 /* ============ GALERÍA (COLLAGE SIN ESPACIOS) ============ */
@@ -772,26 +1120,32 @@ section {
   color: var(--pink);
 }
 
-/* Grid de 4 columnas, celdas cuadradas */
+/* Justified gallery */
 .gallery-collage {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 10px;
 }
 
 .gallery-item {
-  aspect-ratio: 1 / 1;
   border-radius: 14px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   transition: transform 0.5s ease;
+  flex-shrink: 0;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
   transition: transform 0.6s ease;
 }
 
@@ -804,51 +1158,6 @@ section {
   z-index: 2;
 }
 
-.gallery-item .placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
-  z-index: -1;
-}
-
-/* Colores de relleno para placeholders */
-.gallery-item:nth-child(1) .placeholder {
-  background: linear-gradient(135deg, #CD1015, #6C0E23);
-}
-
-.gallery-item:nth-child(2) .placeholder {
-  background: linear-gradient(135deg, #561643, #CD1015);
-}
-
-.gallery-item:nth-child(3) .placeholder {
-  background: linear-gradient(135deg, #F38B94, #6C0E23);
-}
-
-.gallery-item:nth-child(4) .placeholder {
-  background: linear-gradient(135deg, #6C0E23, #561643);
-}
-
-.gallery-item:nth-child(5) .placeholder {
-  background: linear-gradient(135deg, #561643, #F38B94);
-}
-
-.gallery-item:nth-child(6) .placeholder {
-  background: linear-gradient(135deg, #CD1015, #561643);
-}
-
-.gallery-item:nth-child(7) .placeholder {
-  background: linear-gradient(135deg, #F38B94, #CD1015);
-}
-
-.gallery-item:nth-child(8) .placeholder {
-  background: linear-gradient(135deg, #6C0E23, #CD1015);
-}
 
 
 /* ============ CONTACTO ============ */
@@ -927,6 +1236,8 @@ section {
   height: 100%;
   border: 0;
 }
+
+
 
 /* ============ REDES SOCIALES ============ */
 .social {
@@ -1027,6 +1338,44 @@ section {
   border-color: var(--pink);
 }
 
+/* ============ CLOSING BLOCK (redes + footer = 100vh) ============ */
+.closing-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.closing-block .social {
+  padding: 6rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.closing-block footer {
+  padding: 4rem 3rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.closing-block .footer-grid {
+  gap: 2rem;
+  margin-bottom: 0;
+}
+
+.closing-block .footer-col h4 {
+  margin-bottom: 0.7rem;
+}
+
+.closing-block .footer-col ul {
+  gap: 0.3rem;
+}
+
+.closing-block .footer-bottom {
+  margin-top: 8rem;
+  padding: 1rem 0;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: var(--ink);
@@ -1036,7 +1385,7 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3rem;
 }
@@ -1131,6 +1480,7 @@ footer {
   letter-spacing: 0.25em;
   color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
+  user-select: none;
 }
 
 .footer-bottom em {
@@ -1141,6 +1491,116 @@ footer {
   letter-spacing: 0.05em;
   font-size: 0.85rem;
   color: rgba(243, 139, 148, 0.7);
+}
+
+/* ============ SCROLL TO TOP ============ */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: opacity 0.3s ease, transform 0.3s ease, bottom 0.3s ease;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  box-shadow: 0 6px 20px rgba(205, 16, 21, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+}
+
+.scroll-top.levantado {
+  bottom: 5rem;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top svg {
+  width: 28px;
+  height: 28px;
+}
+
+.scroll-top:hover {
+  background: var(--burgundy);
+  transform: translateY(-4px);
+}
+
+/* ============ SPOTIFY FLOTANTE ============ */
+.spotify-float {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  transition: opacity 0.3s ease, transform 0.3s ease, bottom 0.3s ease;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.spotify-float.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.spotify-float.bajado {
+  bottom: 2rem;
+}
+
+.spotify-toggle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: #1DB954;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(29, 185, 84, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.spotify-toggle:hover {
+  background: #17a349;
+  transform: translateY(-3px);
+}
+
+.spotify-panel {
+  width: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+.spotify-panel {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.spotify-panel.cerrado {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  position: absolute;
+  visibility: hidden;
 }
 
 /* ============ ANIMATIONS ON SCROLL ============ */
@@ -1222,28 +1682,19 @@ footer {
     padding: 2rem;
   }
 
-  .dept-row {
-    gap: 1rem;
-  }
-
-  .dept-card {
-    flex: 1 1 calc(50% - 0.5rem);
-    max-width: none;
-  }
-
-  .dept-info {
-    padding: 1.2rem 0.8rem;
-  }
-
-  .dept-name {
-    font-size: 1.1rem;
-  }
-
-  /* Galería en móvil: 2 columnas */
-  .gallery-collage {
+  .dept-grid-pastores {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
   }
+
+  .dept-grid-staff {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .studies-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
 
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1252,7 +1703,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .dept-card {
-    flex: 1 1 100%;
+  .dept-grid-pastores,
+  .dept-grid-staff {
+    grid-template-columns: 1fr;
   }
 }

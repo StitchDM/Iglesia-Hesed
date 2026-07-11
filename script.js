@@ -83,7 +83,7 @@ if (studiesIframe && studiesPlayer) {
   const GAP = 10;
   const TARGET_ROW_H = 160;
   const MIN_IMGS = 8;
-  const MAX_IMGS = 20;
+  const MAX_IMGS = 15;
 
   (function() {
     let paths = [
@@ -119,22 +119,10 @@ if (studiesIframe && studiesPlayer) {
 
         const containerW = collage.offsetWidth || (window.innerWidth - 96);
 
-        // Agrupar en filas
-        const rows = [];
-        let row = [], rowW = 0;
-
-        images.forEach(img => {
-          const scaledW = (img.w / img.h) * TARGET_ROW_H;
-          const needed = rowW + scaledW + (row.length ? GAP : 0);
-          if (row.length && needed > containerW) {
-            rows.push(row);
-            row = [];
-            rowW = 0;
-          }
-          row.push({ ...img, scaledW });
-          rowW += scaledW + (row.length > 1 ? GAP : 0);
-        });
-        if (row.length) rows.push(row);
+        // Dividir en exactamente 2 filas
+        images = images.map(img => ({ ...img, scaledW: (img.w / img.h) * TARGET_ROW_H }));
+        const half = Math.ceil(images.length / 2);
+        const rows = [images.slice(0, half), images.slice(half)].filter(r => r.length);
 
         // Renderizar: escalar cada fila para que ocupe el ancho exacto
         collage.innerHTML = rows.map(row => {

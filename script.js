@@ -62,7 +62,7 @@ if (studiesIframe && studiesPlayer) {
     .then(r => r.json())
     .then(data => {
       if (data.items && data.items.length) {
-        const url = new URL(data.items[0].link);
+        const url = new URL(data.items[data.items.length - 1].link);
         latestVideoId = url.searchParams.get('v') || FALLBACK_VIDEO_ID;
       }
     })

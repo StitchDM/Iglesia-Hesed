@@ -114,7 +114,7 @@ if (studiesIframe && studiesPlayer) {
         img.src = path;
       }))).then(results => {
         let images = results.filter(Boolean);
-        if (window.innerWidth < 768) images = images.filter(img => img.w > img.h);
+        if (window.innerWidth < 768) { images = images.filter(img => img.w > img.h); images = images.slice(0, 6); }
         if (!images.length) return;
 
         const containerW = collage.offsetWidth || (window.innerWidth - 96);

@@ -1647,6 +1647,11 @@ footer {
     display: block;
   }
 
+  .scroll-top,
+  .spotify-float {
+    display: none !important;
+  }
+
   section {
     padding: 5rem 1.5rem;
   }

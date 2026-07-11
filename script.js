@@ -31,7 +31,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
 // === Video de estudios: toma automáticamente el último video de la playlist ===
-const PLAYLIST_ID = 'PLyEwNc7bCIYXDODfXdSF9Zb6x0roC3KQY';
+const CHANNEL_ID = 'UCMpmYHXpqPItv4hRGvJ2t9g';
 const FALLBACK_VIDEO_ID = 'B6HqRzcWHSA';
 
 const studiesIframe = document.getElementById('studiesIframe');
@@ -58,7 +58,7 @@ if (studiesIframe && studiesPlayer) {
 
   videoObserver.observe(studiesPlayer);
 
-  fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`)
+  fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`)
     .then(r => r.json())
     .then(data => {
       if (data.items && data.items.length) {

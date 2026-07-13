@@ -184,7 +184,11 @@ setInterval(checkLive, 60000);
 const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
+let scrollingFromClick = false;
+let scrollEndTimer;
+
 const sectionObserver = new IntersectionObserver((entries) => {
+  if (scrollingFromClick) return;
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navAnchors.forEach(a => a.classList.remove('active'));
@@ -195,6 +199,16 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 sections.forEach(s => sectionObserver.observe(s));
+
+navAnchors.forEach(a => {
+  a.addEventListener('click', () => {
+    navAnchors.forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+    scrollingFromClick = true;
+    clearTimeout(scrollEndTimer);
+    scrollEndTimer = setTimeout(() => { scrollingFromClick = false; }, 1000);
+  });
+});
 
 // === Botón scroll to top ===
 const scrollTopBtn = document.getElementById('scrollTop');

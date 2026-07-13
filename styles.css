@@ -182,6 +182,10 @@ nav {
   padding: 0.6rem 0.8rem;
 }
 
+.nav-scrolling .nav-links a::after {
+  transition: none !important;
+}
+
 .nav-links a::after {
   content: '';
   position: absolute;

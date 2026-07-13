@@ -205,8 +205,12 @@ navAnchors.forEach(a => {
     navAnchors.forEach(x => x.classList.remove('active'));
     a.classList.add('active');
     scrollingFromClick = true;
+    document.querySelector('nav').classList.add('nav-scrolling');
     clearTimeout(scrollEndTimer);
-    scrollEndTimer = setTimeout(() => { scrollingFromClick = false; }, 1000);
+    scrollEndTimer = setTimeout(() => {
+      scrollingFromClick = false;
+      document.querySelector('nav').classList.remove('nav-scrolling');
+    }, 1000);
   });
 });
 

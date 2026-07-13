@@ -76,7 +76,7 @@ if (studiesIframe && studiesPlayer) {
 }
 
 // === Galería justified (sin recorte, rectángulo perfecto) ===
-(function loadGallery() {
+function loadGallery() {
   const collage = document.getElementById('galleryCollage');
   if (!collage) return;
 
@@ -144,7 +144,14 @@ if (studiesIframe && studiesPlayer) {
         collage.querySelectorAll('.gallery-item').forEach(el => observer.observe(el));
       });
   })();
-})();
+}
+
+loadGallery();
+let galleryResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(galleryResizeTimer);
+  galleryResizeTimer = setTimeout(loadGallery, 300);
+});
 
 // === Badge EN VIVO ===
 // Horarios: Martes 20:00, Viernes 20:00, Domingo 11:00 (duración estimada 2h)

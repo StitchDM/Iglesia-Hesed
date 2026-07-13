@@ -660,6 +660,13 @@ section {
   text-transform: uppercase;
 }
 
+.mv-hint-mobile { display: none; }
+
+@media (max-width: 900px) {
+  .mv-hint-desktop { display: none; }
+  .mv-hint-mobile { display: inline; }
+}
+
 .about-assoc {
   grid-column: 1;
   grid-row: 2;

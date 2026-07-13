@@ -238,6 +238,16 @@ setInterval(checkLive, 60000);
   mv.addEventListener('mouseenter', () => { paused = true; });
   mv.addEventListener('mouseleave', () => { paused = false; });
 
+  let touchStartX = 0;
+  mv.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  mv.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      goTo(current + (diff > 0 ? 1 : -1), diff > 0 ? 'forward' : 'backward');
+      startTimer();
+    }
+  }, { passive: true });
+
   startTimer();
 })();
 

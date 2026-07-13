@@ -1897,7 +1897,9 @@ footer {
   }
 
   .about-text { order: 1; grid-column: 1; grid-row: auto; }
-  .about-mv { order: 2; grid-column: 1; grid-row: auto; }
+  .about-mv { order: 2; grid-column: 1; grid-row: auto; min-height: unset; padding-bottom: 4rem; }
+  .about-mv .mv-slide { position: static; opacity: 0; height: 0; overflow: hidden; transform: none; transition: opacity 0.5s ease; }
+  .about-mv .mv-slide.active { opacity: 1; height: auto; overflow: visible; }
   .about-assoc { order: 3; grid-column: 1; grid-row: auto; }
 
   .dept-grid-pastores {

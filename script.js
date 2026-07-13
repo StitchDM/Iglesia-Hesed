@@ -240,30 +240,69 @@ setInterval(checkLive, 60000);
 
   let touchStartX = 0;
   let dragging = false;
+  let nextIdx = null;
 
   mv.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
     dragging = true;
+    nextIdx = null;
     slides[current].style.transition = 'none';
   }, { passive: true });
 
   mv.addEventListener('touchmove', e => {
     if (!dragging) return;
     const diff = e.touches[0].clientX - touchStartX;
+    const w = mv.offsetWidth;
+    const dir = diff < 0 ? 1 : -1;
+    const candidate = (current + dir + slides.length) % slides.length;
+
+    if (candidate !== nextIdx) {
+      if (nextIdx !== null) {
+        slides[nextIdx].style.transition = 'none';
+        slides[nextIdx].style.transform = '';
+        slides[nextIdx].style.opacity = '0';
+      }
+      nextIdx = candidate;
+      slides[nextIdx].style.transition = 'none';
+      slides[nextIdx].style.opacity = '1';
+      slides[nextIdx].style.transform = `translateX(${dir < 0 ? -w : w}px)`;
+    }
+
     slides[current].style.transform = `translateX(${diff}px)`;
+    slides[nextIdx].style.transform = `translateX(${(dir < 0 ? -w : w) + diff}px)`;
   }, { passive: true });
 
   mv.addEventListener('touchend', e => {
     if (!dragging) return;
     dragging = false;
     const diff = touchStartX - e.changedTouches[0].clientX;
-    slides[current].style.transition = '';
-    slides[current].style.transform = '';
+    const w = mv.offsetWidth;
 
-    if (Math.abs(diff) > 60) {
-      goTo(current + (diff > 0 ? 1 : -1), diff > 0 ? 'forward' : 'backward');
-      startTimer();
+    if (Math.abs(diff) > w * 0.3 && nextIdx !== null) {
+      slides[current].style.transition = 'transform 0.3s ease';
+      slides[nextIdx].style.transition = 'transform 0.3s ease';
+      slides[current].style.transform = `translateX(${diff > 0 ? -w : w}px)`;
+      slides[nextIdx].style.transform = 'translateX(0)';
+      setTimeout(() => {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        slides[current].style.cssText = '';
+        current = nextIdx;
+        nextIdx = null;
+        slides[current].style.cssText = '';
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }, 300);
+    } else {
+      slides[current].style.transition = 'transform 0.3s ease';
+      slides[current].style.transform = 'translateX(0)';
+      if (nextIdx !== null) {
+        slides[nextIdx].style.transition = 'none';
+        slides[nextIdx].style.cssText = '';
+        nextIdx = null;
+      }
     }
+    startTimer();
   }, { passive: true });
 
   startTimer();

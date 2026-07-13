@@ -180,6 +180,22 @@ checkLive();
 setInterval(checkLive, 60000);
 
 
+// === Nav activo por sección ===
+const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navAnchors.forEach(a => a.classList.remove('active'));
+      const active = [...navAnchors].find(a => a.getAttribute('href') === '#' + entry.target.id);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => sectionObserver.observe(s));
+
 // === Botón scroll to top ===
 const scrollTopBtn = document.getElementById('scrollTop');
 const heroSection = document.getElementById('inicio');

@@ -568,31 +568,16 @@ section {
   overflow: hidden;
 }
 
+.mv-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
 .mv-slide {
-  position: absolute;
-  top: 2.5rem;
-  left: 2.5rem;
-  right: 2.5rem;
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
-}
-
-.mv-slide.active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-.mv-slide.exit-left {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-.mv-slide.exit-right {
-  opacity: 0;
-  transform: translateX(40px);
+  min-width: 100%;
+  flex-shrink: 0;
+  padding-bottom: 0.5rem;
 }
 
 .mv-label {
@@ -1909,8 +1894,6 @@ footer {
 
   .about-text { order: 1; grid-column: 1; grid-row: auto; }
   .about-mv { order: 2; grid-column: 1; grid-row: auto; min-height: unset; padding-bottom: 4rem; }
-  .about-mv .mv-slide { position: static; opacity: 0; height: 0; overflow: hidden; transform: none; transition: opacity 0.5s ease; }
-  .about-mv .mv-slide.active { opacity: 1; height: auto; overflow: visible; }
   .about-assoc { order: 3; grid-column: 1; grid-row: auto; }
 
   .dept-grid-pastores {

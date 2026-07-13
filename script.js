@@ -185,42 +185,26 @@ setInterval(checkLive, 60000);
   const mv = document.getElementById('aboutMV');
   if (!mv) return;
 
+  const track = document.getElementById('mvTrack');
   const slides = mv.querySelectorAll('.mv-slide');
   const dots = mv.querySelectorAll('.mv-dot');
   let current = 0;
   let paused = false;
   let timer;
 
-  function goTo(idx, dir) {
-    const prev = current;
+  function setTrack(offset, animated) {
+    track.style.transition = animated ? 'transform 0.4s ease' : 'none';
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  function goTo(idx) {
     current = (idx + slides.length) % slides.length;
-    const exitClass = dir === 'forward' ? 'exit-left' : 'exit-right';
-    const enterFrom = dir === 'forward' ? 40 : -40;
-
-    slides[prev].classList.remove('active');
-    slides[prev].classList.add(exitClass);
-    dots[prev].classList.remove('active');
-
-    slides[current].style.transform = `translateX(${enterFrom}px)`;
-    slides[current].style.opacity = '0';
-    slides[current].classList.add('active');
+    dots.forEach(d => d.classList.remove('active'));
     dots[current].classList.add('active');
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        slides[current].style.transform = '';
-        slides[current].style.opacity = '';
-      });
-    });
-
-    setTimeout(() => {
-      slides[prev].classList.remove(exitClass);
-    }, 500);
+    setTrack(-current * mv.offsetWidth, true);
   }
 
-  function next() {
-    if (!paused) goTo(current + 1, 'forward');
-  }
+  function next() { if (!paused) goTo(current + 1); }
 
   function startTimer() {
     clearInterval(timer);
@@ -229,8 +213,7 @@ setInterval(checkLive, 60000);
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const idx = parseInt(dot.dataset.dot);
-      goTo(idx, idx > current ? 'forward' : 'backward');
+      goTo(parseInt(dot.dataset.dot));
       startTimer();
     });
   });
@@ -239,68 +222,25 @@ setInterval(checkLive, 60000);
   mv.addEventListener('mouseleave', () => { paused = false; });
 
   let touchStartX = 0;
-  let dragging = false;
-  let nextIdx = null;
+  let baseOffset = 0;
 
   mv.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
-    dragging = true;
-    nextIdx = null;
-    slides[current].style.transition = 'none';
+    baseOffset = -current * mv.offsetWidth;
+    track.style.transition = 'none';
   }, { passive: true });
 
   mv.addEventListener('touchmove', e => {
-    if (!dragging) return;
     const diff = e.touches[0].clientX - touchStartX;
-    const w = mv.offsetWidth;
-    const dir = diff < 0 ? 1 : -1;
-    const candidate = (current + dir + slides.length) % slides.length;
-
-    if (candidate !== nextIdx) {
-      if (nextIdx !== null) {
-        slides[nextIdx].style.transition = 'none';
-        slides[nextIdx].style.transform = '';
-        slides[nextIdx].style.opacity = '0';
-      }
-      nextIdx = candidate;
-      slides[nextIdx].style.transition = 'none';
-      slides[nextIdx].style.opacity = '1';
-      slides[nextIdx].style.transform = `translateX(${dir < 0 ? -w : w}px)`;
-    }
-
-    slides[current].style.transform = `translateX(${diff}px)`;
-    slides[nextIdx].style.transform = `translateX(${(dir < 0 ? -w : w) + diff}px)`;
+    track.style.transform = `translateX(${baseOffset + diff}px)`;
   }, { passive: true });
 
   mv.addEventListener('touchend', e => {
-    if (!dragging) return;
-    dragging = false;
     const diff = touchStartX - e.changedTouches[0].clientX;
-    const w = mv.offsetWidth;
-
-    if (Math.abs(diff) > w * 0.3 && nextIdx !== null) {
-      slides[current].style.transition = 'transform 0.3s ease';
-      slides[nextIdx].style.transition = 'transform 0.3s ease';
-      slides[current].style.transform = `translateX(${diff > 0 ? -w : w}px)`;
-      slides[nextIdx].style.transform = 'translateX(0)';
-      setTimeout(() => {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        slides[current].style.cssText = '';
-        current = nextIdx;
-        nextIdx = null;
-        slides[current].style.cssText = '';
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-      }, 300);
+    if (Math.abs(diff) > mv.offsetWidth * 0.3) {
+      goTo(current + (diff > 0 ? 1 : -1));
     } else {
-      slides[current].style.transition = 'transform 0.3s ease';
-      slides[current].style.transform = 'translateX(0)';
-      if (nextIdx !== null) {
-        slides[nextIdx].style.transition = 'none';
-        slides[nextIdx].style.cssText = '';
-        nextIdx = null;
-      }
+      setTrack(baseOffset, true);
     }
     startTimer();
   }, { passive: true });

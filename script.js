@@ -180,6 +180,47 @@ checkLive();
 setInterval(checkLive, 60000);
 
 
+// === Misión / Visión carousel ===
+(function() {
+  const mv = document.getElementById('aboutMV');
+  if (!mv) return;
+
+  const slides = mv.querySelectorAll('.mv-slide');
+  const dots = mv.querySelectorAll('.mv-dot');
+  let current = 0;
+  let paused = false;
+  let timer;
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next() {
+    if (!paused) goTo(current + 1);
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(parseInt(dot.dataset.dot));
+      startTimer();
+    });
+  });
+
+  mv.addEventListener('mouseenter', () => { paused = true; });
+  mv.addEventListener('mouseleave', () => { paused = false; });
+
+  startTimer();
+})();
+
 // === Nav activo por sección ===
 const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);

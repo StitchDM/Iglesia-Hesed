@@ -239,10 +239,28 @@ setInterval(checkLive, 60000);
   mv.addEventListener('mouseleave', () => { paused = false; });
 
   let touchStartX = 0;
-  mv.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  let dragging = false;
+
+  mv.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    dragging = true;
+    slides[current].style.transition = 'none';
+  }, { passive: true });
+
+  mv.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    const diff = e.touches[0].clientX - touchStartX;
+    slides[current].style.transform = `translateX(${diff}px)`;
+  }, { passive: true });
+
   mv.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
     const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) {
+    slides[current].style.transition = '';
+    slides[current].style.transform = '';
+
+    if (Math.abs(diff) > 60) {
       goTo(current + (diff > 0 ? 1 : -1), diff > 0 ? 'forward' : 'backward');
       startTimer();
     }

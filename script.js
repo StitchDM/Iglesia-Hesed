@@ -191,16 +191,35 @@ setInterval(checkLive, 60000);
   let paused = false;
   let timer;
 
-  function goTo(idx) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = idx % slides.length;
+  function goTo(idx, dir) {
+    const prev = current;
+    current = (idx + slides.length) % slides.length;
+    const exitClass = dir === 'forward' ? 'exit-left' : 'exit-right';
+    const enterFrom = dir === 'forward' ? 40 : -40;
+
+    slides[prev].classList.remove('active');
+    slides[prev].classList.add(exitClass);
+    dots[prev].classList.remove('active');
+
+    slides[current].style.transform = `translateX(${enterFrom}px)`;
+    slides[current].style.opacity = '0';
     slides[current].classList.add('active');
     dots[current].classList.add('active');
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slides[current].style.transform = '';
+        slides[current].style.opacity = '';
+      });
+    });
+
+    setTimeout(() => {
+      slides[prev].classList.remove(exitClass);
+    }, 500);
   }
 
   function next() {
-    if (!paused) goTo(current + 1);
+    if (!paused) goTo(current + 1, 'forward');
   }
 
   function startTimer() {
@@ -210,7 +229,8 @@ setInterval(checkLive, 60000);
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      goTo(parseInt(dot.dataset.dot));
+      const idx = parseInt(dot.dataset.dot);
+      goTo(idx, idx > current ? 'forward' : 'backward');
       startTimer();
     });
   });

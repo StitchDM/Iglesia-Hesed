@@ -565,6 +565,7 @@ section {
   border-radius: 24px;
   backdrop-filter: blur(10px);
   min-height: 220px;
+  overflow: hidden;
 }
 
 .mv-slide {
@@ -1263,6 +1264,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .gallery-row {

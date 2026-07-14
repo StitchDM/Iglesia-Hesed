@@ -37,7 +37,6 @@
       <li><a href="#departamentos">Ministerios</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
-      <li><a href="#oraciones">Oraciones</a></li>
     </ul>
     <button class="menu-toggle" id="menuToggle">☰</button>
   </nav>
@@ -394,53 +393,62 @@
   <!-- ============ ORACIONES ============ -->
   <section class="prayer" id="oraciones">
     <div class="prayer-inner">
-    <div class="section-header reveal" style="text-align:center; max-width:100%;">
-      <span class="section-number">07 · ORACIONES</span>
-      <h2 class="section-title">Comparte tu <em>petición</em>.</h2>
-    </div>
+      <div class="section-header reveal" style="text-align:center; max-width:100%;">
+        <span class="section-number">07 · ORACIONES</span>
+        <h2 class="section-title">Comparte tu <em>petición</em>.</h2>
+      </div>
 
-    <form class="prayer-form reveal" id="prayerForm" action="https://formspree.io/f/xbdnjewj" method="POST" novalidate>
-      <div class="prayer-row">
-        <div class="prayer-field">
-          <label for="prayerNombre">Nombre</label>
-          <input type="text" id="prayerNombre" name="nombre" placeholder="Tu nombre" required>
+      <form class="prayer-form reveal" id="prayerForm" action="https://formspree.io/f/xqerkonb" method="POST"
+        novalidate>
+        <div class="prayer-row">
+          <div class="prayer-field">
+            <label for="prayerNombre">Nombre <span class="req">*</span></label>
+            <div class="prayer-input-wrap">
+              <input type="text" id="prayerNombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+          </div>
+          <div class="prayer-field">
+            <label for="prayerApellido">Apellido <span class="req">*</span></label>
+            <div class="prayer-input-wrap">
+              <input type="text" id="prayerApellido" name="apellido" placeholder="Tu apellido" required>
+            </div>
+          </div>
         </div>
+
         <div class="prayer-field">
-          <label for="prayerApellido">Apellido</label>
-          <input type="text" id="prayerApellido" name="apellido" placeholder="Tu apellido" required>
+          <label for="prayerCorreo">Correo</label>
+          <div class="prayer-input-wrap">
+            <input type="email" id="prayerCorreo" name="email" placeholder="tu@correo.com">
+          </div>
+          <span class="prayer-field-error" id="correoError">Ingresa un correo válido</span>
         </div>
-      </div>
 
-      <div class="prayer-field">
-        <label for="prayerCorreo">Correo</label>
-        <input type="email" id="prayerCorreo" name="email" placeholder="tu@correo.com" required>
-        <span class="prayer-field-error" id="correoError">Ingresa un correo válido</span>
-      </div>
+        <div class="prayer-field">
+          <label for="prayerSector">Sector <span class="req">*</span></label>
+          <div class="prayer-input-wrap">
+            <select id="prayerSector" name="sector" required>
+              <option value="" disabled selected>Selecciona un sector</option>
+              <option value="Salud">Salud</option>
+              <option value="Familia">Familia</option>
+              <option value="Trabajo">Trabajo</option>
+              <option value="Espiritual">Espiritual</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="prayer-field">
-        <label for="prayerSector">Sector</label>
-        <select id="prayerSector" name="sector" required>
-          <option value="" disabled selected>Selecciona un sector</option>
-          <option value="Salud">Salud</option>
-          <option value="Familia">Familia</option>
-          <option value="Trabajo">Trabajo</option>
-          <option value="Espiritual">Espiritual</option>
-          <option value="Otro">Otro</option>
-        </select>
-      </div>
+        <div class="prayer-field">
+          <label for="prayerMensaje">Petición <span class="req">*</span></label>
+          <div class="prayer-input-wrap">
+            <textarea id="prayerMensaje" name="mensaje" placeholder="Escribe tu petición de oración..." rows="5"
+              required></textarea>
+          </div>
+        </div>
 
-      <div class="prayer-field">
-        <label for="prayerMensaje">Petición</label>
-        <textarea id="prayerMensaje" name="mensaje" placeholder="Escribe tu petición de oración..." rows="5" required></textarea>
-      </div>
-
-      <div class="prayer-actions">
-        <button type="submit" class="btn btn-primary" id="prayerSubmit">Enviar por correo</button>
-        <button type="button" class="btn btn-secondary" id="prayerWhatsapp">Enviar por WhatsApp</button>
-      </div>
-
-      <p class="prayer-status" id="prayerStatus"></p>
-    </form>
+        <div class="prayer-actions">
+          <button type="submit" class="btn btn-primary" id="prayerSubmit">Enviar petición</button>
+        </div>
+      </form>
     </div>
   </section>
 

@@ -229,34 +229,54 @@ setInterval(checkLive, 60000);
 
   const correoInput = document.getElementById('prayerCorreo');
   const correoError = document.getElementById('correoError');
-  const status = document.getElementById('prayerStatus');
   const submitBtn = document.getElementById('prayerSubmit');
-  const waBtn = document.getElementById('prayerWhatsapp');
+  const sectorSelect = document.getElementById('prayerSector');
+
+  // Placeholder color en select mientras no se seleccione
+  function updateSelectStyle() {
+    sectorSelect.classList.toggle('placeholder-selected', !sectorSelect.value);
+  }
+  sectorSelect.addEventListener('change', updateSelectStyle);
+  updateSelectStyle();
 
   function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
+  function setWrap(field, hasError) {
+    const wrap = field.closest('.prayer-input-wrap');
+    if (wrap) wrap.classList.toggle('error', hasError);
+  }
+
   function validateForm() {
     let valid = true;
     form.querySelectorAll('[required]').forEach(field => {
-      if (!field.value.trim()) {
-        field.classList.add('error');
-        valid = false;
-      } else {
-        field.classList.remove('error');
-      }
+      const empty = !field.value.trim();
+      setWrap(field, empty);
+      if (empty) valid = false;
     });
 
     if (correoInput.value && !validateEmail(correoInput.value)) {
-      correoInput.classList.add('error');
+      setWrap(correoInput, true);
       correoError.classList.add('visible');
       valid = false;
     } else {
       correoError.classList.remove('visible');
+      if (!correoInput.value) setWrap(correoInput, false);
     }
 
     return valid;
+  }
+
+  function launchEnvelope() {
+    const rect = submitBtn.getBoundingClientRect();
+    const el = document.createElement('span');
+    el.className = 'envelope-fly';
+    el.textContent = '✉️';
+    el.style.left = (rect.left + rect.width / 2 - 14) + 'px';
+    el.style.top = (rect.top - 4) + 'px';
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
   }
 
   form.addEventListener('submit', async e => {
@@ -265,7 +285,6 @@ setInterval(checkLive, 60000);
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
-    status.textContent = '';
 
     try {
       const res = await fetch(form.action, {
@@ -275,29 +294,15 @@ setInterval(checkLive, 60000);
       });
 
       if (res.ok) {
-        status.textContent = '¡Petición enviada! Oraremos por ti.';
+        launchEnvelope();
         form.reset();
-      } else {
-        status.textContent = 'Hubo un error. Intenta nuevamente.';
+        updateSelectStyle();
+        form.querySelectorAll('.prayer-input-wrap').forEach(w => w.classList.remove('error'));
       }
-    } catch {
-      status.textContent = 'Sin conexión. Intenta nuevamente.';
-    }
+    } catch {}
 
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Enviar por correo';
-  });
-
-  waBtn.addEventListener('click', () => {
-    if (!validateForm()) return;
-    const nombre = document.getElementById('prayerNombre').value.trim();
-    const apellido = document.getElementById('prayerApellido').value.trim();
-    const correo = correoInput.value.trim();
-    const sector = document.getElementById('prayerSector').value;
-    const mensaje = document.getElementById('prayerMensaje').value.trim();
-
-    const texto = `*Petición de Oración*\n\n*Nombre:* ${nombre} ${apellido}\n*Correo:* ${correo}\n*Sector:* ${sector}\n\n*Petición:*\n${mensaje}`;
-    window.open(`https://wa.me/56900000000?text=${encodeURIComponent(texto)}`, '_blank');
+    submitBtn.textContent = 'Enviar petición';
   });
 })();
 

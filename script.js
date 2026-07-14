@@ -222,6 +222,85 @@ setInterval(checkLive, 60000);
   startTimer();
 })();
 
+// === Formulario de Oraciones ===
+(function() {
+  const form = document.getElementById('prayerForm');
+  if (!form) return;
+
+  const correoInput = document.getElementById('prayerCorreo');
+  const correoError = document.getElementById('correoError');
+  const status = document.getElementById('prayerStatus');
+  const submitBtn = document.getElementById('prayerSubmit');
+  const waBtn = document.getElementById('prayerWhatsapp');
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateForm() {
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(field => {
+      if (!field.value.trim()) {
+        field.classList.add('error');
+        valid = false;
+      } else {
+        field.classList.remove('error');
+      }
+    });
+
+    if (correoInput.value && !validateEmail(correoInput.value)) {
+      correoInput.classList.add('error');
+      correoError.classList.add('visible');
+      valid = false;
+    } else {
+      correoError.classList.remove('visible');
+    }
+
+    return valid;
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    status.textContent = '';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (res.ok) {
+        status.textContent = '¡Petición enviada! Oraremos por ti.';
+        form.reset();
+      } else {
+        status.textContent = 'Hubo un error. Intenta nuevamente.';
+      }
+    } catch {
+      status.textContent = 'Sin conexión. Intenta nuevamente.';
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar por correo';
+  });
+
+  waBtn.addEventListener('click', () => {
+    if (!validateForm()) return;
+    const nombre = document.getElementById('prayerNombre').value.trim();
+    const apellido = document.getElementById('prayerApellido').value.trim();
+    const correo = correoInput.value.trim();
+    const sector = document.getElementById('prayerSector').value;
+    const mensaje = document.getElementById('prayerMensaje').value.trim();
+
+    const texto = `*Petición de Oración*\n\n*Nombre:* ${nombre} ${apellido}\n*Correo:* ${correo}\n*Sector:* ${sector}\n\n*Petición:*\n${mensaje}`;
+    window.open(`https://wa.me/56900000000?text=${encodeURIComponent(texto)}`, '_blank');
+  });
+})();
+
 // === Lightbox ===
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');

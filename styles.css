@@ -1537,6 +1537,120 @@ section {
 }
 
 /* ============ CLOSING BLOCK (redes + footer = 100vh) ============ */
+/* ============ ORACIONES ============ */
+.prayer {
+  padding: 6rem 3rem;
+  max-width: 680px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, var(--white), var(--purple-deep));
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.prayer-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.prayer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.prayer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.prayer-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.prayer-field label {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.prayer-field input,
+.prayer-field select,
+.prayer-field textarea {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  color: var(--white);
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.prayer-field input::placeholder,
+.prayer-field textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.prayer-field input:focus,
+.prayer-field select:focus,
+.prayer-field textarea:focus {
+  border-color: var(--pink);
+}
+
+.prayer-field input.error,
+.prayer-field select.error,
+.prayer-field textarea.error {
+  border-color: var(--red);
+}
+
+.prayer-field select option {
+  background: var(--bg);
+  color: var(--white);
+}
+
+.prayer-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.prayer-field-error {
+  font-size: 0.7rem;
+  color: var(--red);
+  display: none;
+}
+
+.prayer-field-error.visible {
+  display: block;
+}
+
+.prayer-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.prayer-status {
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--pink);
+  min-height: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .prayer { padding: 4rem 1.5rem; }
+  .prayer-row { grid-template-columns: 1fr; }
+  .prayer-actions { flex-direction: column; }
+}
+
 .closing-block {
   display: flex;
   flex-direction: column;

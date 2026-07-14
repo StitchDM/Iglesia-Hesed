@@ -192,6 +192,13 @@ setInterval(checkLive, 60000);
   let paused = false;
   let timer;
 
+  function resize() {
+    const w = mv.offsetWidth;
+    slides.forEach(s => { s.style.width = w + 'px'; });
+    track.style.width = (w * slides.length) + 'px';
+    setTrack(-current * w, false);
+  }
+
   function setTrack(offset, animated) {
     track.style.transition = animated ? 'transform 0.4s ease' : 'none';
     track.style.transform = `translateX(${offset}px)`;
@@ -203,6 +210,9 @@ setInterval(checkLive, 60000);
     dots[current].classList.add('active');
     setTrack(-current * mv.offsetWidth, true);
   }
+
+  resize();
+  window.addEventListener('resize', resize);
 
   function next() { if (!paused) goTo(current + 1); }
 

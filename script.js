@@ -192,32 +192,15 @@ setInterval(checkLive, 60000);
   let paused = false;
   let timer;
 
-  function goTo(idx, dir) {
-    const prev = current;
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
     current = (idx + slides.length) % slides.length;
-    dots.forEach(d => d.classList.remove('active'));
-    dots[current].classList.add('active');
-
-    slides[prev].style.transform = dir === 'forward' ? 'translateX(-100%)' : 'translateX(100%)';
-    slides[prev].style.opacity = '0';
-    setTimeout(() => {
-      slides[prev].classList.remove('active');
-      slides[prev].style.transform = '';
-      slides[prev].style.opacity = '';
-    }, 400);
-
-    slides[current].style.transition = 'none';
-    slides[current].style.transform = dir === 'forward' ? 'translateX(100%)' : 'translateX(-100%)';
-    slides[current].style.opacity = '0';
     slides[current].classList.add('active');
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      slides[current].style.transition = '';
-      slides[current].style.transform = 'translateX(0)';
-      slides[current].style.opacity = '1';
-    }));
+    dots[current].classList.add('active');
   }
 
-  function next() { if (!paused) goTo(current + 1, 'forward'); }
+  function next() { if (!paused) goTo(current + 1); }
 
   function startTimer() {
     clearInterval(timer);
@@ -226,28 +209,15 @@ setInterval(checkLive, 60000);
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      const idx = parseInt(dot.dataset.dot);
-      goTo(idx, idx >= current ? 'forward' : 'backward');
+      goTo(parseInt(dot.dataset.dot));
       startTimer();
     });
   });
 
   mv.addEventListener('mouseenter', () => { paused = true; });
   mv.addEventListener('mouseleave', () => { paused = false; });
-
-  let touchStartX = 0;
-
-  mv.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
-
-  mv.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 60) {
-      goTo(current + (diff > 0 ? 1 : -1), diff > 0 ? 'forward' : 'backward');
-      startTimer();
-    }
-  }, { passive: true });
+  mv.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+  mv.addEventListener('touchend', () => { paused = false; startTimer(); }, { passive: true });
 
   startTimer();
 })();

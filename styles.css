@@ -571,7 +571,6 @@ section {
 .mv-track {
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 .mv-slide {
@@ -580,14 +579,15 @@ section {
   left: 0;
   right: 0;
   opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  user-select: none;
   padding-bottom: 0.5rem;
 }
 
 .mv-slide.active {
   opacity: 1;
-  transform: translateX(0);
+  pointer-events: auto;
   position: relative;
 }
 
@@ -661,6 +661,7 @@ section {
 @media (max-width: 900px) {
   .mv-hint-desktop { display: none; }
   .mv-hint-mobile { display: inline; }
+  .about-mv { user-select: none; }
 }
 
 .about-assoc {
